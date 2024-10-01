@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+<body>
+    
+</body>
+</html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MDIA 2294</title>
+	
+	<style>
+	    thead{
+	        font-weight:bold;
+	    }
+	    
+	    td{
+	        padding-left:5px;
+	        padding-right:5px;	        
+	    }
+	    
+	    td.sub-total{
+	        text-align:right;	        
+	    }
+	</style>
+</head>
+<body>
+	<h1>MDIA 2294: ACME Corp Invoice</h1>
+	
+	<table>
+	    <thead>
+	        <tr>
+	            <td>ITEM</td>
+	            <td>DESCRIPTION</td>
+	            <td>QTY</td>
+	            <td>PRICE</td>
+	            <td>LINE TOTAL</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>1</td>
+	            <td><input id="line-1-description" type="text" size="40" value="Anvil" /></td>
+	            <td><input id="line-1-quantity" type="text" size="3" value="5" /></td>
+	            <td><input id="line-1-price" type="text" size="6" value="35.00" /></td>
+	            <td class="sub-total"><span id="line-1"></span></td>
+	        </tr>
+	        <tr>
+	            <td>2</td>
+	            <td><input id="line-2-description" type="text" size="40" value="Rocket Skates (each)" /></td>
+	            <td><input id="line-2-quantity" type="text" size="3" value="2" /></td>
+	            <td><input id="line-2-price" type="text" size="6" value="24.99" /></td>
+	            <td class="sub-total"><span id="line-2"></span></td>
+	        </tr>
+	        <tr>
+	            <td>3</td>
+	            <td><input id="line-3-description" type="text" size="40" value="Giant Magnet" /></td>
+	            <td><input id="line-3-quantity" type="text" size="3" value="1" /></td>
+	            <td><input id="line-3-price" type="text" size="6" value="125.50" /></td>
+	            <td class="sub-total"><span id="line-3"></span></td>
+	        </tr>
+	        <tr>
+	            <td>4</td>
+	            <td><input id="line-4-description" type="text" size="40" value="Ball bearings" /></td>
+	            <td><input id="line-4-quantity" type="text" size="3" value="1000" /></td>
+	            <td><input id="line-4-price" type="text" size="6" value="0.25" /></td>
+	            <td class="sub-total"><span id="line-4"></span></td>
+	        </tr>
+	        <tr>
+	            <td>5</td>
+	            <td><input id="line-5-description" type="text" size="40" value="Portable holes" /></td>
+	            <td><input id="line-5-quantity" type="text" size="3" value="12" /></td>
+	            <td><input id="line-5-price" type="text" size="6" value="15.25" /></td>
+	            <td class="sub-total"><span id="line-5"></span></td>
+	        </tr>
+	    </tbody>
+	    <tfoot>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">SUB TOTAL</td>  
+	            <td class="sub-total"><span id="sub-total"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">DISCOUNT</td>  
+	            <td class="sub-total"><span id="discount"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TAX</td>  
+	            <td class="sub-total"><span id="tax"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TOTAL</td>  
+	            <td class="sub-total" style="border-top:solid black 1px"><span id="Total"></span></td>	        
+	        </tr>
+	    </tfoot>	    
+	</table>
+	
+	<div><button id="calculate">Calculate</button></div>
+	<div>NOTE: discounts of 10% are given to orders over $250</div>
+
+	<script>
+		//creating calculate button to save, so I can use it as Event Listener
+		const calBtn=document.querySelector("#calculate");
+
+		
+	    function calculate() {
+			/*
+			Name: Negin Asem Kaffash
+			Student No: A01354548
+			Assignment: Assignment 1 
+			*/
+            
+		   //1 - Anvil
+		   //---------
+		   //defining subtotal as let type as it will change during time
+		   let subTotal=0;
+		   // defining line1Total as let type as it will change during time
+		   let line1Total =0;
+		   //Here we are getting the value of quantity and price and put it line1Total
+		   line1Total=document.querySelector("#line-1-quantity").value * document.querySelector("#line-1-price").value;
+
+		   // Here it will display the calculated amount
+		   document.querySelector("#line-1").innerHTML= "$" + line1Total.toFixed(2);
+			// Adding the line total each time to subtotal
+		   subTotal += line1Total;
+		   
+			
+
+		   //2 - Rocket Skates (each)
+		   //---------
+		   let line2Total=0;
+		   //Here we are getting the value of quantity and price and put it line1Total
+		   line2Total=document.querySelector("#line-2-quantity").value * document.querySelector("#line-2-price").value;
+
+		   // Here it will display the calculated amount
+		   document.querySelector("#line-2").innerHTML= "$" + line2Total.toFixed(2);
+			// Adding the line total each time to subtotal
+		   subTotal += line2Total;
+
+		   //3 - Giant Magnet
+		   //---------
+		   let line3Total=0;
+		   //Here we are getting the value of quantity and price and put it line1Total
+		   line3Total=document.querySelector("#line-3-quantity").value * document.querySelector("#line-3-price").value;
+
+		   // Here it will display the calculated amount
+		   document.querySelector("#line-3").innerHTML= "$" + line3Total.toFixed(2);
+			// Adding the line total each time to subtotal
+		   subTotal += line3Total;
+
+		   //4 - Ball bearings
+		   //---------
+		   let line4Total=0;
+		   //Here we are getting the value of quantity and price and put it line1Total
+		   line4Total=document.querySelector("#line-4-quantity").value * document.querySelector("#line-4-price").value;
+
+		   // Here it will display the calculated amount
+		   document.querySelector("#line-4").innerHTML= "$" + line4Total.toFixed(2);
+			// Adding the line total each time to subtotal
+		   subTotal += line4Total;
+
+		   //5 - Portable holes
+		   //---------
+		   let line5Total=0;
+		   //Here we are getting the value of quantity and price and put it line1Total
+		   line5Total=document.querySelector("#line-5-quantity").value * document.querySelector("#line-5-price").value;
+
+		   // Here it will display the calculated amount
+		   document.querySelector("#line-5").innerHTML= "$" + line5Total.toFixed(2);
+			// Adding the line total each time to subtotal
+		   subTotal += line5Total;
+
+
+			// here I am checking the subtotal result on console each time
+		   //console.log(subTotal.toFixed(2));
+		   //here displays the subtotal in subtotal field.
+		   document.querySelector("#sub-total").innerHTML="$" + subTotal.toFixed(2);
+
+		   let discount = 0;
+		   let discountTotal=0;
+		  // Checking if subTotal is greater than 250 first
+		   if( subTotal > 250 ){
+			discount=0.1;
+		   }
+		   // Calculating the discount total after the discount is assigned
+		   discountTotal= subTotal * discount;
+
+		   // Updating the discount field
+		   document.querySelector("#discount").innerHTML= "$" + discountTotal.toFixed(2);
+		   
+
+			let tax=0.12;
+			let taxTotal=0;
+			taxTotal=(subTotal-discountTotal)*tax;
+			//console.log(taxTotal);
+			document.querySelector("#tax").innerHTML= "$" + taxTotal.toFixed(2);
+
+			let tot=0;
+			//Calculating the Total amount
+			tot= (subTotal-discountTotal)+taxTotal;
+			// Updating the Total field
+			document.querySelector('#Total').innerHTML= "$" + tot.toFixed(2);
+
+		}
+		//with clicking the calculate button it will show the results from calculate function!
+		calBtn.addEventListener("click",calculate);
+	
+    </script>
+</body>
+</html>
